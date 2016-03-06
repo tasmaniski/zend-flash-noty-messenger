@@ -28,7 +28,7 @@ After that, copy 2 JS files from **vendor/tasmaniski/zf2-flash-noty-messenger/as
 
 mkdir public/js/noty/
 cp vendor/tasmaniski/zf2-flash-noty-messenger/asset/jquery.noty.packaged.js public/js/noty/jquery.noty.packaged.js
-#you can edit config file
+#you can edit below config file
 cp vendor/tasmaniski/zf2-flash-noty-messenger/asset/jquery.noty.config.js public/js/noty/jquery.noty.config.js
 ```
 
