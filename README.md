@@ -1,6 +1,6 @@
-# View Helper for showing flash messages
+# Apple style notifications
 
-Apple style notifications :)  <br/>
+View Helper for showing flash messages.  <br/>
 You must include the latest release of jQuery and Bootstrap. <br/> <br/>
 
 ## **Install**
