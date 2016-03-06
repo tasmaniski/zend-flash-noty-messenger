@@ -55,10 +55,9 @@ In layout.phtml somewhere at the end trigger fire()
 Example
 
 ```php
+//  at the end of layout.phtml
 
-<!-- at the end of layout.phtml -->
-
-<!-- fire messages -->
+/* fire all messages */
 <?php $this->flashNoty()->fire(); ?>
 
 <!-- All Scripts to the bottom! -->
