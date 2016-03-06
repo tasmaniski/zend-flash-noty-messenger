@@ -1,12 +1,12 @@
 {
   "name":              "tasmaniski/zf2-flash-noty-messenger",
   "description":       "View Helper for beautiful JS notifications.",
-  "type":              "zf2 module",
+  "type":              "library",
   "keywords":          ["zf2", "notifications", "js-noty"],
   "homepage":          "https://github.com/tasmaniski",
   "authors": [
     {
-      "name":     "tasmaniski",
+      "name":     "Aleksandar Varnicic",
       "email":    "tasmaniski@gmail.com"
     }
   ],
