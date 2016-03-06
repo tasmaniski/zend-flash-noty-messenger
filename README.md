@@ -25,8 +25,9 @@ The module should be registered in **config/application.config.php**
 After that, copy 2 JS files from **vendor/tasmaniski/zf2-flash-noty-messenger/asset/** and put it on path **public/js/noty/** <br/>
 
 ```shell
-cp vendor/tasmaniski/zf2-flash-noty-messenger/asset/jquery.noty.packaged.js public/js/noty/jquery.noty.packaged.js
 
+mkdir public/js/noty/
+cp vendor/tasmaniski/zf2-flash-noty-messenger/asset/jquery.noty.packaged.js public/js/noty/jquery.noty.packaged.js
 #you can edit config file
 cp vendor/tasmaniski/zf2-flash-noty-messenger/asset/jquery.noty.config.js public/js/noty/jquery.noty.config.js
 ```
