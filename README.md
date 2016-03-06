@@ -1,7 +1,7 @@
 # View Helper for showing flash messages
 
-The helper show all messages from ZF2 FlashMessenger in stylish JS way.
-It relies on third party JS so you must include the latest release of jQuery. <br/> <br/>
+Apple style notifications :)  <br/>
+You must include the latest release of jQuery and Bootstrap. <br/> <br/>
 
 ## **Install**
 
@@ -22,7 +22,8 @@ The module should be registered in **config/application.config.php**
 ),
 ```
 
-After that, copy 2 JS files from **vendor/tasmaniski/zf2-flash-noty-messenger/asset/** and put it on path **public/js/noty/** <br/>
+After that, copy 2 JS files from **vendor/tasmaniski/zf2-flash-noty-messenger/asset/** <br/>
+and put it on path **public/js/noty/** <br/>
 
 ```shell
 
@@ -33,7 +34,7 @@ cp vendor/tasmaniski/zf2-flash-noty-messenger/asset/jquery.noty.config.js public
 
 <br/>
 
-## **Setup**
+## Setup
 
 In layout.phtml somewhere at the end trigger fire()
 
@@ -41,10 +42,10 @@ In layout.phtml somewhere at the end trigger fire()
 
 /**
  * The fire() method do
- *     Collect all messages from previous and current request <br/>
- *     clear current messages because we will show it <br/>
- *     add JS files <br/>
- *     add JS notifications <br/>
+ *     Collect all messages from previous and current request
+ *     clear current messages because we will show it
+ *     add JS files
+ *     add JS notifications
  */
 <?php $this->flashNoty()->fire(); ?>
 
@@ -52,7 +53,7 @@ In layout.phtml somewhere at the end trigger fire()
 <?php echo $this->inlineScript() ?>
 ```
 
-Example
+Example from my code
 
 ```php
 //  at the end of layout.phtml
@@ -71,6 +72,7 @@ Example
 
 ## **Use**
 
+Use it in any controller.<br/>
 Add messages in your controller and the messages will be showed (in redirected request or current)
 
 ```php
