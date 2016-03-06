@@ -1,4 +1,4 @@
-# Apple style notifications
+# Apple style notifications :)
 
 View Helper for showing flash messages with help of **NOTY** jQuery plugin http://ned.im/noty/#/about  <br/>
 You must include the latest release of jQuery and Bootstrap. <br/> <br/>
