@@ -9,7 +9,7 @@ Add in composer.json file and than run **composer update**
 
 ```javascript
 "require": {
-    ...
+    "tasmaniski/zf2-flash-noty-messenger":"1.0.*"
 }
 ```
 
