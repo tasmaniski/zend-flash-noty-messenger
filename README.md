@@ -28,7 +28,6 @@ After that, copy 2 JS files from **vendor/tasmaniski/zf2-flash-noty-messenger/as
 
 mkdir public/js/noty/
 cp vendor/tasmaniski/zf2-flash-noty-messenger/asset/jquery.noty.packaged.js public/js/noty/jquery.noty.packaged.js
-#you can edit below config file
 cp vendor/tasmaniski/zf2-flash-noty-messenger/asset/jquery.noty.config.js public/js/noty/jquery.noty.config.js
 ```
 
@@ -36,16 +35,17 @@ cp vendor/tasmaniski/zf2-flash-noty-messenger/asset/jquery.noty.config.js public
 
 ## **Setup**
 
-In layout.phtml somewhere at the end trigger fire() which do
-
-/** <br/>
-&nbsp; * Collect all messages from previous and current request <br/>
-&nbsp; * clear current messages because we will show it <br/>
-&nbsp; * add JS files <br/>
-&nbsp; * add JS notifications <br/>
-&nbsp; */ <br/>
+In layout.phtml somewhere at the end trigger fire()
 
 ```php
+
+/**
+ * The fire() method do
+ *     Collect all messages from previous and current request <br/>
+ *     clear current messages because we will show it <br/>
+ *     add JS files <br/>
+ *     add JS notifications <br/>
+ */
 <?php $this->flashNoty()->fire(); ?>
 
 <!-- if you already don't have this line, must add it for including JS files -->
