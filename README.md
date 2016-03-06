@@ -1,6 +1,6 @@
 # Apple style notifications
 
-View Helper for showing flash messages.  <br/>
+View Helper for showing flash messages in help of noty lib http://ned.im/noty/#/about  <br/>
 You must include the latest release of jQuery and Bootstrap. <br/> <br/>
 
 ![alt tag](https://raw.githubusercontent.com/tasmaniski/zf2-flash-noty-messenger/master/asset/screen-shot.png)
