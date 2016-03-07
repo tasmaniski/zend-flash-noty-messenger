@@ -86,4 +86,7 @@ $this->flashMessenger()->addInfoMessage('Info message, to do whatever...');
 $this->flashMessenger()->addWarningMessage('Warning message to be careful.');
 ```
 
+## Credits
+
+I would like to give a credit to my colleague https://github.com/maksi80 for CSS style of notifications.
 
