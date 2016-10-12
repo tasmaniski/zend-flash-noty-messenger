@@ -2,23 +2,18 @@
 
 namespace FlashNotyMessenger\Factory\View\Helper;
 
-use Zend\ServiceManager\FactoryInterface;
-use Zend\ServiceManager\ServiceLocatorInterface;
-use Zend\Mvc\Router\Http\RouteMatch;
-use \FlashNotyMessenger\View\Helper\FlashNoty;
+use Interop\Container\ContainerInterface;
+use FlashNotyMessenger\View\Helper\FlashNoty;
 
-class FlashNotyFactory implements FactoryInterface
+class FlashNotyFactory
 {
-    /**
-     * @param ServiceLocatorInterface $serviceLocator
-     * @return FlashNoty
-     */
-    public function createService(ServiceLocatorInterface $serviceLocator)
+    public function __invoke(ContainerInterface $container, $requestedName, array $options = null)
     {
         return new FlashNoty(
-            $serviceLocator->get('flashmessenger'),
-            $serviceLocator->get('inlinescript'),
-            $serviceLocator->get('basepath')
+            $container->get('ControllerPluginManager')->get('flashmessenger'),
+            $container->get('ViewHelperManager')->get('inlinescript'),
+            $container->get('ViewHelperManager')->get('basepath')
         );
     }
+
 }

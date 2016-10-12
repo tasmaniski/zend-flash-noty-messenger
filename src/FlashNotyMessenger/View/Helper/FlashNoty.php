@@ -29,7 +29,7 @@ class FlashNoty extends AbstractHelper
     public function fire()
     {
         $basePath = $this->basePath;
-        $plugin   = $this->flashMessenger->getPluginFlashMessenger();
+        $plugin   = $this->flashMessenger;
         $noty     = [
             'alert'       => array_merge($plugin->getMessages(), $plugin->getCurrentMessages()),
             'information' => array_merge($plugin->getInfoMessages(), $plugin->getCurrentInfoMessages()),

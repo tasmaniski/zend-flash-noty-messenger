@@ -1,9 +1,11 @@
 # Apple style notifications :)
 
+New version is here! Current version support Zend Framework 3
+
 View Helper for showing flash messages with help of **NOTY** jQuery plugin http://ned.im/noty/#/about  <br/>
 You must include the latest release of jQuery and Bootstrap. <br/> <br/>
 
-![alt tag](https://raw.githubusercontent.com/tasmaniski/zf2-flash-noty-messenger/master/asset/screen-shot.png)
+![alt tag](https://raw.githubusercontent.com/tasmaniski/zend-flash-noty-messenger/master/asset/screen-shot.png)
 
 
 ## **Install**
@@ -12,7 +14,7 @@ Add in composer.json file and than run **composer update**
 
 ```javascript
 "require": {
-    "tasmaniski/zf2-flash-noty-messenger":"1.0.*"
+    "tasmaniski/zend-flash-noty-messenger":"^2.0"
 }
 ```
 
@@ -25,14 +27,14 @@ The module should be registered in **config/application.config.php**
 ),
 ```
 
-After that, copy 2 JS files from **vendor/tasmaniski/zf2-flash-noty-messenger/asset/** <br/>
+After that, copy 2 JS files from **vendor/tasmaniski/zend-flash-noty-messenger/asset/** <br/>
 and put it on path **public/js/noty/** <br/>
 
 ```shell
 
 mkdir public/js/noty/
-cp vendor/tasmaniski/zf2-flash-noty-messenger/asset/jquery.noty.packaged.js public/js/noty/jquery.noty.packaged.js
-cp vendor/tasmaniski/zf2-flash-noty-messenger/asset/jquery.noty.config.js public/js/noty/jquery.noty.config.js
+cp vendor/tasmaniski/zend-flash-noty-messenger/asset/jquery.noty.packaged.js public/js/noty/jquery.noty.packaged.js
+cp vendor/tasmaniski/zend-flash-noty-messenger/asset/jquery.noty.config.js public/js/noty/jquery.noty.config.js
 ```
 
 <br/>
@@ -71,7 +73,7 @@ Example from my code
 
 ```
 
-<br/>
+*Note: if you want to use it in ZF2 app, add in composer.json version ^1.0*
 
 ## **Use**
 

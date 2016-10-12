@@ -1,8 +1,8 @@
 {
-  "name":              "tasmaniski/zf2-flash-noty-messenger",
+  "name":              "tasmaniski/zend-flash-noty-messenger",
   "description":       "View Helper for beautiful JS notifications.",
   "type":              "library",
-  "keywords":          ["zf2", "notifications", "js-noty"],
+  "keywords":          ["zend framework", "notifications", "js-noty"],
   "homepage":          "https://github.com/tasmaniski",
   "authors": [
     {
@@ -11,8 +11,8 @@
     }
   ],
   "require": {
-    "php": ">=5.5",
-    "zendframework/zendframework": "2.5.*"
+    "php": ">=5.6",
+    "zendframework/zend-mvc-plugin-flashmessenger": "^1.0"
   },
   "autoload": {
     "psr-0": {
