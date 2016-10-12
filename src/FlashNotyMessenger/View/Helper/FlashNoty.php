@@ -3,7 +3,7 @@
 namespace FlashNotyMessenger\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
-use Zend\View\Helper\FlashMessenger;
+use Zend\Mvc\Plugin\FlashMessenger\FlashMessenger;
 use Zend\View\Helper\InlineScript;
 use Zend\View\Helper\BasePath;
 
