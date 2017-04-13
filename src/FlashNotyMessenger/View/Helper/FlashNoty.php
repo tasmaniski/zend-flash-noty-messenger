@@ -51,6 +51,7 @@ class FlashNoty extends AbstractHelper
         foreach(array_filter($noty) as $type => $messages){
             $message = implode('<br/><br/>', $messages);
             $message = preg_replace('/\s+/', ' ', $message);
+            $message = str_replace("'", '&#34;', $message);
 
             echo "var n = noty({text: '$message',type: '$type'});";
         }
