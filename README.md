@@ -12,19 +12,35 @@ You must include the latest release of jQuery and Bootstrap. <br/> <br/>
 
 Add in composer.json file and than run **composer update**
 
-```javascript
-"require": {
+```json
+{
+  "require": {
     "tasmaniski/zend-flash-noty-messenger":"^2.0"
+  }
 }
 ```
 
-The module should be registered in **config/application.config.php**
+The module should be registered in **config/application.config.php** in Zend Framework 2
 
-```javascript
-'modules' => array(
-    '...',
+```php
+return [
+    // ...
+    'modules' => array(
+        '...',
+        'FlashNotyMessenger'
+    ],
+    // ...
+]
+```
+
+The module should be registered in **config/modules.config.php** in Zend Framework 3
+
+```php
+return [
+    // ...
     'FlashNotyMessenger'
-),
+    // ...
+]
 ```
 
 After that, copy 2 JS files from **vendor/tasmaniski/zend-flash-noty-messenger/asset/** <br/>
@@ -35,6 +51,36 @@ and put it on path **public/js/noty/** <br/>
 mkdir public/js/noty/
 cp vendor/tasmaniski/zend-flash-noty-messenger/asset/jquery.noty.packaged.js public/js/noty/jquery.noty.packaged.js
 cp vendor/tasmaniski/zend-flash-noty-messenger/asset/jquery.noty.config.js public/js/noty/jquery.noty.config.js
+```
+
+#### For use Noty v3
+Using ***node_modules***
+
+```shell
+cd public
+# npm
+npm install noty
+# or used yarn
+yarn add noty
+```
+
+In ***global.php*** or ***local.php***
+
+```php
+return [
+    // ...
+    // For example
+    'noty_assets' => [
+        // Noty library
+        'library'   => 'node_modules/noty/lib/noty.min.js',
+
+        // If you use Noty v3+
+        'useNotyV3' => true,
+        'theme'     => 'metroui',
+        'css'       => 'node_modules/noty/lib/noty.css'
+    ],
+    // ...
+];
 ```
 
 <br/>
