@@ -64,7 +64,7 @@ npm install noty
 yarn add noty
 ```
 
-In ***global.php*** or ***local.php***
+In ***config/autoload/global.php*** or ***config/autoload/local.php***
 
 ```php
 return [
