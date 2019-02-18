@@ -22,10 +22,8 @@ class Module
         $container = $application->getServiceManager();
         $config = $container->get('config');
         $basePath = $container->get('ViewHelperManager')->get('basepath');
-
-        if ($config['noty_assets']['useNotyV3']) {
-            $container->get('ViewHelperManager')->get('headlink')->appendStylesheet($basePath($config['noty_assets']['css']));
-        }
+        
+        $container->get('ViewHelperManager')->get('headlink')->appendStylesheet($basePath('css/noty/noty.css'));    
     }
 
     public function getConfig()

@@ -15,7 +15,7 @@ class FlashNotyFactory
             $container->get('ControllerPluginManager')->get('flashmessenger'),
             $container->get('ViewHelperManager')->get('inlinescript'),
             $container->get('ViewHelperManager')->get('basepath'),
-            $config['noty_assets']
+            $config['noty_config']
         );
     }
 

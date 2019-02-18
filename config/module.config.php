@@ -4,7 +4,7 @@ return [
     
     'noty_config' => [
         'layout'    => 'topRight',
-        'theme'     => 'mint',
+        'theme'     => 'metroui',
         'closeWith' => ['click', 'button'],
         /* 'animation' => [
             'open'  => 'animated fadeInRight',

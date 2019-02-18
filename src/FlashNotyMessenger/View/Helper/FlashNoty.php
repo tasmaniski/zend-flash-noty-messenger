@@ -24,6 +24,11 @@ class FlashNoty extends AbstractHelper
      */
     private $basePath;
 
+    /** 
+     * @var array
+     */
+    private $config;
+
     /**
      * FlashNoty constructor.
      * @param FlashMessenger $flashMessenger
@@ -63,23 +68,18 @@ class FlashNoty extends AbstractHelper
         $plugin->clearCurrentMessages('warning');
         $plugin->clearCurrentMessages('error');
 
-        $this->inlineScript->appendFile($basePath($this->config['library']));
-
-        if (!$this->config['useNotyV3']) {
-            $this->inlineScript->appendFile($basePath($this->config['config']));
-        }
+        $this->inlineScript->appendFile($basePath('js/noty/noty.min.js'));
 
         $this->inlineScript->captureStart();
+
+        echo sprintf("Noty.overrideDefaults(%s)\n", json_encode($this->config));
+
         foreach(array_filter($noty) as $type => $messages){
             $message = implode('<br/><br/>', $messages);
             $message = preg_replace('/\s+/', ' ', $message);
             $message = str_replace("'", '&#34;', $message);
-
-            if (!$this->config['useNotyV3']) {
-                echo "var n = noty({text: '$message',type: '$type'});";
-            } else {
-                echo sprintf("new Noty({text:'%s', type:'%s', theme:'%s'}).show();", $message, $type, $this->config['theme']);
-            }
+            
+            echo sprintf("new Noty({text:'%s', type:'%s'}).show();\n", $message, $type);
         }
         $this->inlineScript->captureEnd();
     }
