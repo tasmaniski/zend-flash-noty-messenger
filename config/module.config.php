@@ -1,17 +1,15 @@
 <?php
 
 return [
-    'noty_assets' => [
-        // Noty library
-        'library'   => 'js/noty/jquery.noty.packaged.js',
-
-        // Custom configuration
-        'config'    => 'js/noty/jquery.noty.config.js',
-
-        // If you use Noty v3+
-        'useNotyV3' => false,
-        'theme'     => 'metroui',
-        'css'       => ''
+    
+    'noty_config' => [
+        'layout'    => 'topRight',
+        'theme'     => 'mint',
+        'closeWith' => ['click', 'button'],
+        /* 'animation' => [
+            'open'  => 'animated fadeInRight',
+            'close' => 'animated fadeOutRight'
+        ] */
     ],
 
     'view_helpers' => [
