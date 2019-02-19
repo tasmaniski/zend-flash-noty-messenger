@@ -1,5 +1,5 @@
 {
-  "name":              "tasmaniski/zend-flash-noty-messenger",
+  "name":              "rurounize/zend-flash-noty-messenger",
   "description":       "View Helper for beautiful JS notifications.",
   "type":              "library",
   "keywords":          ["zend framework", "notifications", "js-noty", "flashMessenger"],
