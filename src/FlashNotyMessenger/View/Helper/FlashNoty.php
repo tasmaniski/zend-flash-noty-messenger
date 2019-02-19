@@ -4,8 +4,9 @@ namespace FlashNotyMessenger\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 use Zend\Mvc\Plugin\FlashMessenger\FlashMessenger;
-use Zend\View\Helper\InlineScript;
 use Zend\View\Helper\BasePath;
+use Zend\View\Helper\HeadLink;
+use Zend\View\Helper\InlineScript;
 
 class FlashNoty extends AbstractHelper
 {
@@ -68,11 +69,20 @@ class FlashNoty extends AbstractHelper
         $plugin->clearCurrentMessages('warning');
         $plugin->clearCurrentMessages('error');
 
-        $this->inlineScript->appendFile($basePath('js/noty/noty.min.js'));
+        $config = $this->config;
+        switch ($config['assets']['use']) {
+            case 'cdn':
+                $this->inlineScript->appendFile($config['assets']['cdn']['js']); 
+                break;
+            case 'local':
+            default:
+                $this->inlineScript->appendFile($config['assets']['local']['js']);
+                break;
+        }
 
         $this->inlineScript->captureStart();
 
-        echo sprintf("Noty.overrideDefaults(%s)\n", json_encode($this->config));
+        echo sprintf("Noty.overrideDefaults(%s)\n", json_encode($config['config']));
 
         foreach(array_filter($noty) as $type => $messages){
             $message = implode('<br/><br/>', $messages);

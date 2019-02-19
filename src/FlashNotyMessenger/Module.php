@@ -5,25 +5,35 @@ namespace FlashNotyMessenger;
 use Zend\Mvc\ApplicationInterface;
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use Zend\Mvc\Controller\AbstractActionController;
 
 class Module
 {
     public function onBootstrap(MvcEvent $e)
     {
         $eventManager        = $e->getApplication()->getEventManager();
-        $moduleRouteListener = new ModuleRouteListener();
-        $moduleRouteListener->attach($eventManager);
-
-        $this->addStylesheet($e->getApplication());
+        $eventManager
+            ->getSharedManager()
+            ->attach(AbstractActionController::class, MvcEvent::EVENT_DISPATCH, [$this, 'onDispatch'], 100);
     }
 
-    private function addStylesheet(ApplicationInterface $application)
+    private function onDispatch(MvcEvent $e)
     {
+        $application = $e->getTarget();
         $container = $application->getServiceManager();
         $config = $container->get('config');
         $basePath = $container->get('ViewHelperManager')->get('basepath');
+        $headLink = $container->get('ViewHelperManager')->get('headLink');
         
-        $container->get('ViewHelperManager')->get('headlink')->appendStylesheet($basePath('css/noty/noty.css'));    
+        switch ($config['assets']['use']) {
+            case 'cdn':
+                $headLink->appendStylesheet($config['assets']['cdn']['css']);
+                break;
+            case 'local':
+            default:
+                $headLink->appendStylesheet($config['assets']['local']['css']);
+                break;
+        }
     }
 
     public function getConfig()
