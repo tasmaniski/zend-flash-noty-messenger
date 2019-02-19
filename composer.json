@@ -3,7 +3,7 @@
   "description":       "View Helper for beautiful JS notifications.",
   "type":              "library",
   "keywords":          ["zend framework", "notifications", "js-noty", "flashMessenger"],
-  "homepage":          "https://github.com/tasmaniski",
+  "homepage":          "https://github.com/elialejandro",
   "authors": [
     {
       "name":     "Aleksandar Varnicic",
