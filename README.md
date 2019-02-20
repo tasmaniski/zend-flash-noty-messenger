@@ -1,40 +1,85 @@
 # Apple style notifications :)
 
-New version is here! Current version support Zend Framework 3
+This version support Zend Framework 3 and Noty v3
 
-View Helper for showing flash messages with help of **NOTY** jQuery plugin http://ned.im/noty/#/about  <br/>
-You must include the latest release of jQuery and Bootstrap. <br/> <br/>
+View Helper for showing flash messages with help of **NOTY** plugin http://ned.im/noty/#/
 
-![alt tag](https://raw.githubusercontent.com/tasmaniski/zend-flash-noty-messenger/master/asset/screen-shot.png)
-
+![Screenshot](https://raw.githubusercontent.com/elialejandro/zend-flash-noty-messenger/master/asset/screenshot.png)
 
 ## **Install**
 
 Add in composer.json file and than run **composer update**
 
-```javascript
-"require": {
-    "tasmaniski/zend-flash-noty-messenger":"^2.0"
+```json
+{
+  "require": {
+    "rurounize/zend-flash-noty-messenger":"^3.0"
+  }
 }
 ```
 
-The module should be registered in **config/application.config.php**
+The module should be registered in **config/modules.config.php** in Zend Framework 3
 
-```javascript
-'modules' => array(
-    '...',
+```php
+return [
+    // ...
     'FlashNotyMessenger'
-),
+    // ...
+]
 ```
 
-After that, copy 2 JS files from **vendor/tasmaniski/zend-flash-noty-messenger/asset/** <br/>
+**Note** FlashNotyMessenger includes local files and CDN assets, you can decide what to use.
+
+After that, copy JS files from **vendor/rurounize/zend-flash-noty-messenger/asset/** <br/>
 and put it on path **public/js/noty/** <br/>
 
 ```shell
-
 mkdir public/js/noty/
-cp vendor/tasmaniski/zend-flash-noty-messenger/asset/jquery.noty.packaged.js public/js/noty/jquery.noty.packaged.js
-cp vendor/tasmaniski/zend-flash-noty-messenger/asset/jquery.noty.config.js public/js/noty/jquery.noty.config.js
+# For develop
+cp vendor/rurounize/zend-flash-noty-messenger/asset/noty.js public/js/noty/noty.js
+# For production
+cp vendor/rurounize/zend-flash-noty-messenger/asset/noty.min.js public/js/noty/noty.min.js
+```
+
+If you can use local assets copy CSS files from **vendor/rurounize/zend-flash-noty-messenger/asset/** <br/>
+and put it on path **public/css/noty/** <br/>
+
+```shell
+mkdir public/css/noty/
+# For develop
+cp vendor/rurounize/zend-flash-noty-messenger/asset/noty.css public/css/noty/noty.css
+# For production
+cp vendor/rurounize/zend-flash-noty-messenger/asset/noty.min.css public/css/noty/noty.min.css
+```
+
+If you want to customize the configuration you can copy in ***config/autoload/global.php*** or ***config/autoload/local.php***
+
+```php
+return [
+    // ...
+    'noty_config' => [
+        'layout'    => 'topRight',
+        'theme'     => 'mint',
+        'closeWith' => ['click', 'button'],
+        /* 'animation' => [
+            'open'  => 'animated fadeInRight',
+            'close' => 'animated fadeOutRight'
+        ] */
+    ],
+
+    'noty_assets' => [
+        'use'   => 'cdn', // local for local assets
+        'cdn'   => [
+            'css'   => 'https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css',
+            'js'    => 'https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js',
+        ],
+        'local' => [
+            'css'   => 'css/noty/noty.min.css',
+            'js'    => 'js/noty/noty.min.js',
+        ]
+    ],
+    // ...
+];
 ```
 
 <br/>
@@ -55,25 +100,8 @@ In layout.phtml somewhere at the end trigger fire()
 <?php $this->flashNoty()->fire(); ?>
 
 <!-- if you already don't have this line, must add it for including JS files -->
-<?php echo $this->inlineScript() ?>
+<?= $this->inlineScript() ?>
 ```
-
-Example from my code
-
-```php
-//  at the end of layout.phtml
-
-/* fire all messages */
-<?php $this->flashNoty()->fire(); ?>
-
-<!-- All Scripts to the bottom! -->
-<?php echo $this->inlineScript()  // we call here inlineScript()
-    ->appendFile($this->basePath('js/jquery.js'))
-    ->appendFile($this->basePath('js/bootstrap.js')); ?>
-
-```
-
-*Note: if you want to use it in ZF2 app, add in composer.json version ^1.0*
 
 ## **Use**
 
@@ -90,5 +118,5 @@ $this->flashMessenger()->addWarningMessage('Warning message to be careful.');
 
 ## Credits
 
-I would like to give a credit to my colleague https://github.com/maksi80 for CSS style of notifications.
+The original version belongs to https://github.com/tasmaniski/zend-flash-noty-messenger
 

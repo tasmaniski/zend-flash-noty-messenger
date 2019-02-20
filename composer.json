@@ -1,17 +1,21 @@
 {
-  "name":              "tasmaniski/zend-flash-noty-messenger",
+  "name":              "rurounize/zend-flash-noty-messenger",
   "description":       "View Helper for beautiful JS notifications.",
   "type":              "library",
-  "keywords":          ["zend framework", "notifications", "js-noty"],
-  "homepage":          "https://github.com/tasmaniski",
+  "keywords":          ["zend framework", "notifications", "js-noty", "flashMessenger"],
+  "homepage":          "https://github.com/elialejandro",
   "authors": [
     {
       "name":     "Aleksandar Varnicic",
       "email":    "tasmaniski@gmail.com"
+    },
+    {
+      "name": "Eli Alejandro",
+      "email": "iscelialejandro@gmail.com"
     }
   ],
   "require": {
-    "php": ">=5.6",
+    "php": ">=7.0",
     "zendframework/zend-mvc-plugin-flashmessenger": "^1.0"
   },
   "autoload": {

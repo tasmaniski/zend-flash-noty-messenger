@@ -4,20 +4,45 @@ namespace FlashNotyMessenger\View\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 use Zend\Mvc\Plugin\FlashMessenger\FlashMessenger;
-use Zend\View\Helper\InlineScript;
 use Zend\View\Helper\BasePath;
+use Zend\View\Helper\HeadLink;
+use Zend\View\Helper\InlineScript;
 
 class FlashNoty extends AbstractHelper
 {
+    /**
+     * @var FlashMessenger
+     */
     private $flashMessenger;
+
+    /**
+     * @var InlineScript
+     */
     private $inlineScript;
+
+    /**
+     * @var BasePath
+     */
     private $basePath;
 
-    public function __construct(FlashMessenger $flashMessenger, InlineScript $inlineScript, BasePath $basePath)
+    /** 
+     * @var array
+     */
+    private $config;
+
+    /**
+     * FlashNoty constructor.
+     * @param FlashMessenger $flashMessenger
+     * @param InlineScript $inlineScript
+     * @param BasePath $basePath
+     * @param array $config
+     */
+    public function __construct(FlashMessenger $flashMessenger, InlineScript $inlineScript, BasePath $basePath, array $config)
     {
         $this->flashMessenger = $flashMessenger;
         $this->inlineScript   = $inlineScript;
         $this->basePath       = $basePath;
+        $this->config         = $config;
     }
 
     /**
@@ -44,16 +69,27 @@ class FlashNoty extends AbstractHelper
         $plugin->clearCurrentMessages('warning');
         $plugin->clearCurrentMessages('error');
 
-        $this->inlineScript->appendFile($basePath('js/noty/jquery.noty.packaged.js'));
-        $this->inlineScript->appendFile($basePath('js/noty/jquery.noty.config.js'));
+        $config = $this->config;
+        switch ($config['assets']['use']) {
+            case 'cdn':
+                $this->inlineScript->appendFile($config['assets']['cdn']['js']); 
+                break;
+            case 'local':
+            default:
+                $this->inlineScript->appendFile($config['assets']['local']['js']);
+                break;
+        }
 
         $this->inlineScript->captureStart();
+
+        echo sprintf("Noty.overrideDefaults(%s)\n", json_encode($config['config']));
+
         foreach(array_filter($noty) as $type => $messages){
             $message = implode('<br/><br/>', $messages);
             $message = preg_replace('/\s+/', ' ', $message);
             $message = str_replace("'", '&#34;', $message);
-
-            echo "var n = noty({text: '$message',type: '$type'});";
+            
+            echo sprintf("new Noty({text:'%s', type:'%s'}).show();\n", $message, $type);
         }
         $this->inlineScript->captureEnd();
     }
