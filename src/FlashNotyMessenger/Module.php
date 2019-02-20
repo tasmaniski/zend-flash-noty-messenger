@@ -11,27 +11,28 @@ class Module
 {
     public function onBootstrap(MvcEvent $e)
     {
-        $eventManager        = $e->getApplication()->getEventManager();
+        $app = $e->getTarget();
+        $eventManager = $app->getEventManager();
         $eventManager
             ->getSharedManager()
-            ->attach(AbstractActionController::class, MvcEvent::EVENT_DISPATCH, [$this, 'onDispatch'], 100);
+            ->attach(AbstractActionController::class, MvcEvent::EVENT_DISPATCH, [$this, 'onDispatch']);
     }
 
-    private function onDispatch(MvcEvent $e)
+    public function onDispatch(MvcEvent $event)
     {
-        $application = $e->getTarget();
+        $application = $event->getApplication();
         $container = $application->getServiceManager();
         $config = $container->get('config');
         $basePath = $container->get('ViewHelperManager')->get('basepath');
         $headLink = $container->get('ViewHelperManager')->get('headLink');
         
-        switch ($config['assets']['use']) {
+        switch ($config['noty_assets']['use']) {
             case 'cdn':
-                $headLink->appendStylesheet($config['assets']['cdn']['css']);
+                $headLink->appendStylesheet($config['noty_assets']['cdn']['css']);
                 break;
             case 'local':
             default:
-                $headLink->appendStylesheet($config['assets']['local']['css']);
+                $headLink->appendStylesheet($config['noty_assets']['local']['css']);
                 break;
         }
     }
