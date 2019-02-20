@@ -4,6 +4,8 @@ This version support Zend Framework 3 and Noty v3
 
 View Helper for showing flash messages with help of **NOTY** plugin http://ned.im/noty/#/
 
+![Screenshot](https://raw.githubusercontent.com/elialejandro/zend-flash-noty-messenger/master/asset/screenshot.png)
+
 ## **Install**
 
 Add in composer.json file and than run **composer update**
@@ -26,29 +28,31 @@ return [
 ]
 ```
 
+**Note** FlashNotyMessenger includes local files and CDN assets, you can decide what to use.
+
 After that, copy JS files from **vendor/rurounize/zend-flash-noty-messenger/asset/** <br/>
 and put it on path **public/js/noty/** <br/>
 
 ```shell
 mkdir public/js/noty/
-#For develop
+# For develop
 cp vendor/rurounize/zend-flash-noty-messenger/asset/noty.js public/js/noty/noty.js
-#For production
+# For production
 cp vendor/rurounize/zend-flash-noty-messenger/asset/noty.min.js public/js/noty/noty.min.js
 ```
 
-Also, copy CSS files from **vendor/rurounize/zend-flash-noty-messenger/asset/** <br/>
+If you can use local assets copy CSS files from **vendor/rurounize/zend-flash-noty-messenger/asset/** <br/>
 and put it on path **public/css/noty/** <br/>
 
 ```shell
 mkdir public/css/noty/
-#For develop
-cp vendor/rurounize/zend-flash-noty-messenger/asset/noty.css public/js/noty/noty.css
-#For production
-cp vendor/rurounize/zend-flash-noty-messenger/asset/noty.min.css public/js/noty/noty.min.css
+# For develop
+cp vendor/rurounize/zend-flash-noty-messenger/asset/noty.css public/css/noty/noty.css
+# For production
+cp vendor/rurounize/zend-flash-noty-messenger/asset/noty.min.css public/css/noty/noty.min.css
 ```
 
-In ***config/autoload/global.php*** or ***config/autoload/local.php***
+If you want to customize the configuration you can copy in ***config/autoload/global.php*** or ***config/autoload/local.php***
 
 ```php
 return [
@@ -61,6 +65,18 @@ return [
             'open'  => 'animated fadeInRight',
             'close' => 'animated fadeOutRight'
         ] */
+    ],
+
+    'noty_assets' => [
+        'use'   => 'cdn', // local for local assets
+        'cdn'   => [
+            'css'   => 'https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.css',
+            'js'    => 'https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js',
+        ],
+        'local' => [
+            'css'   => 'css/noty/noty.min.css',
+            'js'    => 'js/noty/noty.min.js',
+        ]
     ],
     // ...
 ];
